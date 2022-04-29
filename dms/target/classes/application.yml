@@ -1,0 +1,50 @@
+#端口号设置
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+
+
+spring:
+  application:
+    name: dms
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://fomalhaut.online:3306/dms?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: betterlin599
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+  thymeleaf:
+    cache: false
+
+
+#springsecurity 账号密码
+  security:
+    user:
+      name: root
+      password: 123123
+
+
+mybatis-plus:
+  mapper-locations: classpath:com/lin/mapper/xml/*.xml
+  type-aliases-package: com.lin.entity
+
+
+#日志处理  为了展示mybatis的sql语句
+logging:
+  level:
+    com.lin.mapper: debug
+    com.lin.service: info
+    com.lin.controller: info
+
+
+dms:
+  jwt:
+    header: Authorization
+    expire: 604800 #7天，秒单位
+    secret: ji8n3439n439n43ld9ne9343fdfer49h  #32位的密钥 可以随便填
+
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.mapper.StudentCourseMapper">
+
+    <select id="getCourseGradeList" resultType="com.lin.domain.vo.StudentGradeVo">
+
+        select  sc.id,
+                u.username stuName,
+                c.course_name courseName,
+                objective_one_usual objectiveOneUsual,
+                objective_one_experiment objectiveOneExperiment,
+                objective_one_final objectiveOneFinal,
+                objective_one_grade objectiveOneGrade,
+                objective_two_usual objectiveTwoUsual,
+                objective_two_experiment objectiveTwoExperiment,
+                objective_two_final objectiveTwoFinal,
+                objective_two_grade objectiveTwoGrade,
+                objective_three_usual objectiveThreeUsual,
+                objective_three_experiment objectiveThreeExperiment,
+                objective_three_final objectiveThreeFinal,
+                objective_three_grade objectiveThreeGrade,
+                usual_grade usualGrade,
+                experiment_grade experimentGrade,
+                final_grade finalGrade,
+                total_grade totalGrade
+        from student_course sc
+                 left join `user` u on u.id = sc.stu_id
+                 left join course c on c.id = sc.course_id
+        where course_id = (select id from course
+                            where course_name =#{param.name}
+                              and semester = #{param.semesterId}
+                              and c.stu_class_id = #{param.classId})
+
+    </select>
+
+    <select id="getStudentGradeList" resultType="com.lin.domain.vo.GradeVo">
+
+        select sc.id id ,
+               c.course_name courseName,
+               c.course_no courseNo,
+               t.name courseType,
+               se.name semester,
+               c.credit,
+               sc.total_grade totalGrade
+        from student_course sc
+                 left join course c on sc.course_id = c.id
+                 left join type t on t.id = c.course_type_id
+                 left join semester se on se.id = c.semester
+        where sc.stu_id = #{userId}
+    </select>
+
+    <select id="getObjective" resultType="com.lin.domain.vo.ObjectiveGradeChartsVo">
+
+        select sc.id,objective_one_grade,objective_two_grade,objective_three_grade
+               from student_course sc
+                        left join `user` u on u.id = sc.stu_id
+                        left join course c on c.id = sc.course_id
+        where course_id = (select id from course
+                           where course_name =#{param.name}
+                             and semester = #{param.semesterId}
+                             and c.stu_class_id = #{param.classId})
+
+    </select>
+
+
+
+</mapper>

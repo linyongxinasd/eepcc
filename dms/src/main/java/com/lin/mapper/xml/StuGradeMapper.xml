@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.mapper.StuGradeMapper">
+    
+    <resultMap id="gradeClassMap" type="com.lin.domain.vo.GradeClassVo">
+        <result property="id" column="gid"/>
+        <result property="name" column="stuGrade"/>
+        <collection property="classes" ofType="com.lin.entity.StuClass">
+            <id property="id" column="cid"/>
+            <result property="name" column="stuClass"/>
+            <result property="stuGradeId" column="stuGradeId"/>
+        </collection>
+    </resultMap>
+
+    <select id="getGradeClass" resultMap="gradeClassMap">
+        select sc.id cid,sc.name stuClass,sg.id gid,sg.name stuGrade,sc.stu_grade_id stuGradeId
+        from stu_class sc ,stu_grade sg
+        where sc.stu_grade_id = sg.id
+    </select>
+
+    
+
+</mapper>

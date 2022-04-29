@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.mapper.CourseMapper">
+
+    <select id="getByName" resultType="com.lin.domain.vo.CourseVo">
+
+        select c.id,
+               course_name courseName,
+               course_no courseNo,
+               (select t.name from type t where t.id = c.course_type_id ) courseType,
+               credit_hours creditHours,
+               credit,
+               (select sc.name from stu_class sc where sc.id = c.stu_class_id) stuClass,
+               (select scg.name from (select  sg.*,sc.id classId from stu_grade sg , stu_class sc where sc.stu_grade_id = sg.id )scg where scg.classId = c.stu_class_id) stuGrade,
+               (select se.name from semester se where se.id = c.semester)semester,
+               (select username from user u where u.id = c.teacher_id) teacher,
+               (select username from user u where u.id = c.evaluator_id) evaluator,
+               (select username from user u where u.id = c.director_id) director,
+               create_time createTime,
+               update_time updateTime
+        from course c
+            where course_name like concat('%',#{name},'%')
+    </select>
+
+    <select id="getCourseList" resultType="com.lin.domain.vo.CourseVo">
+        select c.id,
+               course_name courseName,
+               course_no courseNo,
+               (select t.name from type t where t.id = c.course_type_id ) courseType,
+               credit_hours creditHours,
+               credit,
+               (select sc.name from stu_class sc where sc.id = c.stu_class_id) stuClass,
+               (select scg.name from (select  sg.*,sc.id classId from stu_grade sg , stu_class sc where sc.stu_grade_id = sg.id )scg where scg.classId = c.stu_class_id) stuGrade,
+               (select se.name from semester se where se.id = c.semester)semester,
+               (select username from user u where u.id = c.teacher_id) teacher,
+               (select username from user u where u.id = c.evaluator_id) evaluator,
+               (select username from user u where u.id = c.director_id) director,
+               create_time createTime,
+               update_time updateTime
+        from course c
+    </select>
+
+    <select id="getCourseSelect" resultType="com.lin.domain.vo.CourseNameVo">
+        select distinct id, course_name from course
+    </select>
+
+</mapper>
