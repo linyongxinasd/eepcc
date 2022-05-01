@@ -4,6 +4,7 @@ package com.lin.controller;
 import com.lin.domain.Response;
 import com.lin.domain.ResponseCode;
 import com.lin.domain.param.CourseGradeParam;
+import com.lin.domain.vo.GradeAvg;
 import com.lin.domain.vo.GradeVo;
 import com.lin.domain.vo.ObjectiveGradeChartsVo;
 import com.lin.domain.vo.StudentGradeVo;
@@ -94,15 +95,21 @@ public class StudentCourseController {
         Response response = new Response();
 
         List<ObjectiveGradeChartsVo> vos = studentCourseService.getObjective(param);
-
-        for (ObjectiveGradeChartsVo vo : vos) {
-            vo.setObjectiveOneGrade(vo.getObjectiveOneGrade()/71);
-            vo.setObjectiveTwoGrade(vo.getObjectiveTwoGrade()/21);
-            vo.setObjectiveThreeGrade(vo.getObjectiveThreeGrade()/8);
-        }
-
         response.setData(vos);
         response.setStatusCode(ResponseCode.SUCCESS);
+        return response;
+    }
+
+    @PostMapping("/getGradeAvg")
+    public Response getGradeAvg(@RequestBody CourseGradeParam param){
+        Response response = new Response();
+
+        GradeAvg gradeAvg = studentCourseService.getGradeAvg(param);
+
+        response.setData(gradeAvg);
+        response.setStatusCode(ResponseCode.SUCCESS);
+
+
         return response;
     }
 

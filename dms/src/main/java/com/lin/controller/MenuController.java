@@ -39,8 +39,9 @@ public class MenuController {
 
         List<MenuVo> navs = menuService.getCurrentUserNav();
 
+        String[] authoritys = {"sys:user:list", "sys:user:save", "sys:user:delete"};
         response.setData(MapUtil.builder()
-                .put("authoritys", null)
+                .put("authoritys", authoritys)
                 .put("nav", navs)
                 .map());
         return response;

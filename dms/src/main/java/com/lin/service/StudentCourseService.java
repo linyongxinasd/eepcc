@@ -1,6 +1,7 @@
 package com.lin.service;
 
 import com.lin.domain.param.CourseGradeParam;
+import com.lin.domain.vo.GradeAvg;
 import com.lin.domain.vo.GradeVo;
 import com.lin.domain.vo.ObjectiveGradeChartsVo;
 import com.lin.domain.vo.StudentGradeVo;
@@ -39,6 +40,22 @@ public class StudentCourseService extends ServiceImpl<StudentCourseMapper, Stude
 
     public List<ObjectiveGradeChartsVo> getObjective(CourseGradeParam param) {
 
-        return studentCourseMapper.getObjective(param);
+        List<ObjectiveGradeChartsVo> vos = studentCourseMapper.getObjective(param);
+        for (ObjectiveGradeChartsVo vo : vos) {
+            vo.setObjectiveOneGrade(vo.getObjectiveOneGrade()/71);
+            vo.setObjectiveTwoGrade(vo.getObjectiveTwoGrade()/21);
+            vo.setObjectiveThreeGrade(vo.getObjectiveThreeGrade()/8);
+        }
+        return vos;
+    }
+
+    public GradeAvg getGradeAvg(CourseGradeParam param) {
+        GradeAvg gradeAvg = studentCourseMapper.getGradeAvg(param);
+
+        gradeAvg.setObjectiveOneGradeAvg(gradeAvg.getObjectiveOneGradeAvg()/71);
+        gradeAvg.setObjectiveTwoGradeAvg(gradeAvg.getObjectiveTwoGradeAvg()/21);
+        gradeAvg.setObjectiveThreeGradeAvg(gradeAvg.getObjectiveThreeGradeAvg()/8);
+
+        return gradeAvg;
     }
 }

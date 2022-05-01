@@ -99,6 +99,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/favicon.ico").permitAll()    //放行验证码
                 .antMatchers("/index").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/download").permitAll()
                 .antMatchers("/level1/**").hasRole("vip1")
                 .antMatchers("/level2/**").hasRole("vip2")
                 .antMatchers("/level3/**").hasRole("vip3")
@@ -184,12 +185,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //super.configure(auth);
         auth.userDetailsService(myUserDetailService);
 
-       /* auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("lyx").password(new BCryptPasswordEncoder().encode("123456")).roles("vip2","vip3")
-                .and()
-                .withUser("test").password(new BCryptPasswordEncoder().encode("123456")).roles("vip1")
-                .and()
-                .withUser("root").password(new BCryptPasswordEncoder().encode("123")).roles("vip1","vip2","vip3");
-*/
     }
 }

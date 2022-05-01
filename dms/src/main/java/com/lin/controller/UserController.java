@@ -7,6 +7,7 @@ import com.lin.entity.User;
 import com.lin.mapper.UserMapper;
 import com.lin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class UserController {
 
     @Resource
     public UserMapper userMapper;
-    @RequestMapping("/getUserInfo")
+    @PostMapping("/getUserInfo")
     public Response getUserInfo(Principal principal){
 
         Response response = new Response();

@@ -1,6 +1,7 @@
 package com.lin.mapper;
 
 import com.lin.domain.param.CourseGradeParam;
+import com.lin.domain.vo.GradeAvg;
 import com.lin.domain.vo.GradeVo;
 import com.lin.domain.vo.ObjectiveGradeChartsVo;
 import com.lin.domain.vo.StudentGradeVo;
@@ -27,4 +28,6 @@ public interface StudentCourseMapper extends BaseMapper<StudentCourse> {
     List<GradeVo> getStudentGradeList(Long userId);
 
     List<ObjectiveGradeChartsVo> getObjective(@Param("param") CourseGradeParam param);
+
+    GradeAvg getGradeAvg(@Param("param") CourseGradeParam param);
 }
