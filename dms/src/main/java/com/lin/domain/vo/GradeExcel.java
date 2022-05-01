@@ -1,99 +1,65 @@
 package com.lin.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
-import io.swagger.annotations.ApiModelProperty;
+import com.alibaba.excel.annotation.format.NumberFormat;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import com.lin.utils.MyNumberToLongConvert;
 import lombok.Data;
 
-
+@Data
+@ColumnWidth(8)
 public class GradeExcel {
 
-    @Override
-    public String toString() {
-        return "GradeExcel{" +
-                "id=" + id +
-                ", courseName='" + courseName + '\'' +
-                ", courseNo='" + courseNo + '\'' +
-                ", courseType='" + courseType + '\'' +
-                ", semester='" + semester + '\'' +
-                ", credit=" + credit +
-                ", totalGrade=" + totalGrade +
-                '}';
-    }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public String getCourseNo() {
-        return courseNo;
-    }
-
-    public void setCourseNo(String courseNo) {
-        this.courseNo = courseNo;
-    }
-
-    public String getCourseType() {
-        return courseType;
-    }
-
-    public void setCourseType(String courseType) {
-        this.courseType = courseType;
-    }
-
-    public String getSemester() {
-        return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    public Double getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Double credit) {
-        this.credit = credit;
-    }
-
-    public Double getTotalGrade() {
-        return totalGrade;
-    }
-
-    public void setTotalGrade(Double totalGrade) {
-        this.totalGrade = totalGrade;
-    }
-
-    @ExcelProperty("ID")
+    @ExcelProperty(value = "序号",index = 0)
     private Long id;
 
-    @ExcelProperty("课程名称")
-    private String courseName;
+    @ColumnWidth(16)
+    @ExcelProperty(value = "学生学号",index = 1)
+    private Long stuId;
+    @ColumnWidth(8)
+    @ExcelProperty(value = "学生姓名",index = 2)
+    private String stuName;
 
-    @ExcelProperty("课程编号")
-    private String courseNo;
+    @ExcelProperty(value = "课程id",index = 3)
+    private Long courseId;
 
-    @ExcelProperty("课程类型")
-    private String courseType;
+    @ExcelProperty(value = {"目标一","课堂表现"},index = 4)
+    private Double objectiveOneUsual;
 
-    @ExcelProperty("开课学期")
-    private String semester;
+    @ExcelProperty(value = {"目标一","实验作业"},index = 5)
+    private Double objectiveOneExperiment;
 
-    @ExcelProperty("课程学分")
-    private Double credit;
+    @ExcelProperty(value = {"目标一","期末考试"},index = 6)
+    private Double objectiveOneFinal;
 
-    @ExcelProperty("总评成绩")
-    private Double totalGrade;
+/*    @ExcelProperty({"目标一","课程目标得分"})
+    private Double objectiveOneGrade;*/
+
+    @ExcelProperty(value = {"目标二","课堂表现"},index = 7)
+    private Double objectiveTwoUsual;
+
+    @ExcelProperty(value = {"目标二","实验作业"},index = 8)
+    private Double objectiveTwoExperiment;
+
+    @ExcelProperty(value = {"目标二","期末考试"},index = 9)
+    private Double objectiveTwoFinal;
+
+  /*  @ExcelProperty({"目标二","课程目标得分"})
+    private Double objectiveTwoGrade;*/
+
+    @ExcelProperty(value = {"目标三","课堂表现"},index = 10)
+    private Double objectiveThreeUsual;
+
+    @ExcelProperty(value = {"目标三","实验作业"},index = 11)
+    private Double objectiveThreeExperiment;
+
+    @ExcelProperty(value = {"目标三","期末考试"},index = 12)
+    private Double objectiveThreeFinal;
+/*
+    @ExcelProperty({"目标三","课程目标得分"})
+    private Double objectiveThreeGrade;*/
+
+
 }

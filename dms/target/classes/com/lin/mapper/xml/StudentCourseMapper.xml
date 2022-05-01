@@ -4,42 +4,43 @@
 
     <select id="getCourseGradeList" resultType="com.lin.domain.vo.StudentGradeVo">
 
-        select  sc.id,
-                u.username stuName,
-                c.course_name courseName,
-                objective_one_usual objectiveOneUsual,
-                objective_one_experiment objectiveOneExperiment,
-                objective_one_final objectiveOneFinal,
-                objective_one_grade objectiveOneGrade,
-                objective_two_usual objectiveTwoUsual,
-                objective_two_experiment objectiveTwoExperiment,
-                objective_two_final objectiveTwoFinal,
-                objective_two_grade objectiveTwoGrade,
-                objective_three_usual objectiveThreeUsual,
-                objective_three_experiment objectiveThreeExperiment,
-                objective_three_final objectiveThreeFinal,
-                objective_three_grade objectiveThreeGrade,
-                usual_grade usualGrade,
-                experiment_grade experimentGrade,
-                final_grade finalGrade,
-                total_grade totalGrade
+        select sc.id,
+               u.username                 stuName,
+               c.course_name              courseName,
+               objective_one_usual        objectiveOneUsual,
+               objective_one_experiment   objectiveOneExperiment,
+               objective_one_final        objectiveOneFinal,
+               objective_one_grade        objectiveOneGrade,
+               objective_two_usual        objectiveTwoUsual,
+               objective_two_experiment   objectiveTwoExperiment,
+               objective_two_final        objectiveTwoFinal,
+               objective_two_grade        objectiveTwoGrade,
+               objective_three_usual      objectiveThreeUsual,
+               objective_three_experiment objectiveThreeExperiment,
+               objective_three_final      objectiveThreeFinal,
+               objective_three_grade      objectiveThreeGrade,
+               usual_grade                usualGrade,
+               experiment_grade           experimentGrade,
+               final_grade                finalGrade,
+               total_grade                totalGrade
         from student_course sc
                  left join `user` u on u.id = sc.stu_id
                  left join course c on c.id = sc.course_id
-        where course_id = (select id from course
-                            where course_name =#{param.name}
-                              and semester = #{param.semesterId}
-                              and c.stu_class_id = #{param.classId})
+        where course_id = (select id
+                           from course
+                           where course_name = #{param.name}
+                             and semester = #{param.semesterId}
+                             and c.stu_class_id = #{param.classId})
 
     </select>
 
     <select id="getStudentGradeList" resultType="com.lin.domain.vo.GradeVo">
 
-        select sc.id id ,
-               c.course_name courseName,
-               c.course_no courseNo,
-               t.name courseType,
-               se.name semester,
+        select sc.id          id,
+               c.course_name  courseName,
+               c.course_no    courseNo,
+               t.name         courseType,
+               se.name        semester,
                c.credit,
                sc.total_grade totalGrade
         from student_course sc
@@ -51,32 +52,62 @@
 
     <select id="getObjective" resultType="com.lin.domain.vo.ObjectiveGradeChartsVo">
 
-        select sc.id,objective_one_grade,
+        select sc.id,
+               objective_one_grade,
                objective_two_grade,
                objective_three_grade
-               from student_course sc
-                        left join `user` u on u.id = sc.stu_id
-                        left join course c on c.id = sc.course_id
-        where course_id = (select id from course
-                           where course_name =#{param.name}
+        from student_course sc
+                 left join `user` u on u.id = sc.stu_id
+                 left join course c on c.id = sc.course_id
+        where course_id = (select id
+                           from course
+                           where course_name = #{param.name}
                              and semester = #{param.semesterId}
                              and c.stu_class_id = #{param.classId})
 
     </select>
 
     <select id="getGradeAvg" resultType="com.lin.domain.vo.GradeAvg">
-        select avg(objective_one_grade) objectiveOneGradeAvg,
-               avg(objective_two_grade) objectiveTwoGradeAvg,
+        select avg(objective_one_grade)   objectiveOneGradeAvg,
+               avg(objective_two_grade)   objectiveTwoGradeAvg,
                avg(objective_three_grade) objectiveThreeGradeAvg
         from student_course sc
                  left join `user` u on u.id = sc.stu_id
                  left join course c on c.id = sc.course_id
-        where course_id = (select id from course
-                           where course_name =#{param.name}
+        where course_id = (select id
+                           from course
+                           where course_name = #{param.name}
                              and semester = #{param.semesterId}
                              and c.stu_class_id = #{param.classId})
     </select>
 
+    <insert id="saveBath" parameterType="com.lin.entity.StudentCourse">
+        insert into student_course(
+        stu_id,
+        course_id,
+        objective_one_usual,
+        objective_one_experiment,
+        objective_one_final,
+        objective_two_usual,
+        objective_two_experiment,
+        objective_two_final,
+        objective_three_experiment)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.stuId,jdbcType=BIGINT},
+            #{item.courseId,jdbcType=BIGINT},
+            #{item.objectiveOneUsual,jdbcType=DOUBLE},
+            #{item.objectiveOneExperiment,jdbcType=DOUBLE},
+            #{item.objectiveOneFinal,jdbcType=DOUBLE},
+            #{item.objectiveTwoUsual,jdbcType=DOUBLE},
+            #{item.objectiveTwoExperiment,jdbcType=DOUBLE},
+            #{item.objectiveTwoFinal,jdbcType=DOUBLE},
+            #{item.objectiveThreeExperiment,jdbcType=DOUBLE}
+            )
+        </foreach>
+
+    </insert>
 
 
 </mapper>

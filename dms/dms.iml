@@ -169,5 +169,6 @@
     <orderEntry type="library" name="Maven: cglib:cglib:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.1" level="project" />
     <orderEntry type="library" name="Maven: org.ehcache:ehcache:3.9.9" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.62" level="project" />
   </component>
 </module>

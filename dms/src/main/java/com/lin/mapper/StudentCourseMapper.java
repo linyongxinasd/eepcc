@@ -1,10 +1,7 @@
 package com.lin.mapper;
 
 import com.lin.domain.param.CourseGradeParam;
-import com.lin.domain.vo.GradeAvg;
-import com.lin.domain.vo.GradeVo;
-import com.lin.domain.vo.ObjectiveGradeChartsVo;
-import com.lin.domain.vo.StudentGradeVo;
+import com.lin.domain.vo.*;
 import com.lin.entity.StudentCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +27,8 @@ public interface StudentCourseMapper extends BaseMapper<StudentCourse> {
     List<ObjectiveGradeChartsVo> getObjective(@Param("param") CourseGradeParam param);
 
     GradeAvg getGradeAvg(@Param("param") CourseGradeParam param);
+
+    void saveBathGrade(List<StudentCourse> list);
+
+
 }

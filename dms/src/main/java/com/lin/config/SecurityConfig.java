@@ -100,6 +100,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/index").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/download").permitAll()
+                .antMatchers("/upload").permitAll()
                 .antMatchers("/level1/**").hasRole("vip1")
                 .antMatchers("/level2/**").hasRole("vip2")
                 .antMatchers("/level3/**").hasRole("vip3")
