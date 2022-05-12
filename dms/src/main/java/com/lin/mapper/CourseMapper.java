@@ -1,5 +1,6 @@
 package com.lin.mapper;
 
+import com.lin.domain.vo.CascadeVo;
 import com.lin.domain.vo.CourseNameVo;
 import com.lin.domain.vo.CourseVo;
 import com.lin.entity.Course;
@@ -24,4 +25,6 @@ public interface CourseMapper extends BaseMapper<Course> {
     List<CourseVo> getCourseList();
 
     List<CourseNameVo> getCourseSelect();
+
+    List<CascadeVo> getCascade();
 }

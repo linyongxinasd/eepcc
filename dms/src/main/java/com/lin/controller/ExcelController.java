@@ -41,10 +41,10 @@ public class ExcelController {
     @Resource
     public StudentCourseService studentCourseService;
     @PostMapping("/upload")
-    public Response upload(MultipartFile file) throws IOException {
+    public Response upload(MultipartFile file,Long courseId) throws IOException {
         Response response = new Response();
 
-        EasyExcel.read(file.getInputStream(), GradeExcel.class, new MyReadListener(studentCourseService)).registerConverter(new MyNumberToLongConvert()).sheet().doRead();
+        EasyExcel.read(file.getInputStream(), GradeExcel.class, new MyReadListener(studentCourseService,courseId)).registerConverter(new MyNumberToLongConvert()).sheet().doRead();
         response.setStatusCode(ResponseCode.SUCCESS);
 
         return response;

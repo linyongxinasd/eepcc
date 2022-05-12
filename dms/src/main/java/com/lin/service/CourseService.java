@@ -1,5 +1,6 @@
 package com.lin.service;
 
+import com.lin.domain.vo.CascadeVo;
 import com.lin.domain.vo.CourseNameVo;
 import com.lin.domain.vo.CourseVo;
 import com.lin.entity.Course;
@@ -42,5 +43,10 @@ public class CourseService extends ServiceImpl<CourseMapper, Course>{
     public List<CourseNameVo> getCourseSelect() {
 
         return courseMapper.getCourseSelect();
+    }
+
+    public List<CascadeVo> getCascade() {
+
+        return courseMapper.getCascade();
     }
 }

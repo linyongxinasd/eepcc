@@ -44,4 +44,28 @@
         select distinct id, course_name from course
     </select>
 
+    <resultMap id="cascadeMap" type="com.lin.domain.vo.CascadeVo">
+        <id column="semesterId" property="id"/>
+        <result column="semesterName" property="name"/>
+        <collection property="children" ofType="com.lin.domain.vo.GradeCascadeVo">
+            <id column="gradeId" property="id"/>
+            <result column="gradeName" property="name"/>
+            <collection property="children" ofType="com.lin.domain.vo.ClassCascadeVo">
+                <id column="classId" property="id"/>
+                <result column="className" property="name"/>
+                <collection property="children" ofType="com.lin.domain.vo.CourseCascadeVo">
+                    <id column="courseId" property="id"/>
+                    <result column="courseName" property="name"/>
+                </collection>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="getCascade" resultMap="cascadeMap">
+        select se.id semesterId,se.`name` semesterName, sg.id gradeId ,sg.`name` gradeName,sc.id classId, sc.`name` className, c.id courseId, c.course_name courseName
+        from course c
+                 left join semester se on c.semester = se.id
+                 left join stu_class sc on c.stu_class_id = sc.id
+                 left join stu_grade sg on sc.stu_grade_id = sg.id
+    </select>
+
 </mapper>

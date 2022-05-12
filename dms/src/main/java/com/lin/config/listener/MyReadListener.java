@@ -36,9 +36,11 @@ public class MyReadListener implements ReadListener<GradeExcel> {
      *
      * @param studentCourseMapper
      */
+    private Long courseId;
     private StudentCourseService studentCourseService;
-    public MyReadListener(StudentCourseService studentCourseService) {
+    public MyReadListener(StudentCourseService studentCourseService,Long courseId) {
         this.studentCourseService = studentCourseService;
+        this.courseId = courseId;
     }
 
     /**
@@ -77,7 +79,7 @@ public class MyReadListener implements ReadListener<GradeExcel> {
      */
     private void saveData() {
         log.info("{}条数据，开始存储数据库！", cachedDataList.size());
-        studentCourseService.save(cachedDataList);
+        studentCourseService.save(cachedDataList,courseId);
         log.info("存储数据库成功！");
     }
 }

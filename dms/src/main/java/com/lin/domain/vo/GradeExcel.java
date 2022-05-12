@@ -22,40 +22,40 @@ public class GradeExcel {
     @ExcelProperty(value = "学生姓名",index = 2)
     private String stuName;
 
-    @ExcelProperty(value = "课程id",index = 3)
-    private Long courseId;
+    /*@ExcelProperty(value = "课程id",index = 3)
+    private Long courseId;*/
 
-    @ExcelProperty(value = {"目标一","课堂表现"},index = 4)
+    @ExcelProperty(value = {"目标一","课堂表现"},index = 3)
     private Double objectiveOneUsual;
 
-    @ExcelProperty(value = {"目标一","实验作业"},index = 5)
+    @ExcelProperty(value = {"目标一","实验作业"},index = 4)
     private Double objectiveOneExperiment;
 
-    @ExcelProperty(value = {"目标一","期末考试"},index = 6)
+    @ExcelProperty(value = {"目标一","期末考试"},index = 5)
     private Double objectiveOneFinal;
 
 /*    @ExcelProperty({"目标一","课程目标得分"})
     private Double objectiveOneGrade;*/
 
-    @ExcelProperty(value = {"目标二","课堂表现"},index = 7)
+    @ExcelProperty(value = {"目标二","课堂表现"},index = 6)
     private Double objectiveTwoUsual;
 
-    @ExcelProperty(value = {"目标二","实验作业"},index = 8)
+    @ExcelProperty(value = {"目标二","实验作业"},index = 7)
     private Double objectiveTwoExperiment;
 
-    @ExcelProperty(value = {"目标二","期末考试"},index = 9)
+    @ExcelProperty(value = {"目标二","期末考试"},index = 8)
     private Double objectiveTwoFinal;
 
   /*  @ExcelProperty({"目标二","课程目标得分"})
     private Double objectiveTwoGrade;*/
 
-    @ExcelProperty(value = {"目标三","课堂表现"},index = 10)
+    @ExcelProperty(value = {"目标三","课堂表现"},index = 9)
     private Double objectiveThreeUsual;
 
-    @ExcelProperty(value = {"目标三","实验作业"},index = 11)
+    @ExcelProperty(value = {"目标三","实验作业"},index = 10)
     private Double objectiveThreeExperiment;
 
-    @ExcelProperty(value = {"目标三","期末考试"},index = 12)
+    @ExcelProperty(value = {"目标三","期末考试"},index = 11)
     private Double objectiveThreeFinal;
 /*
     @ExcelProperty({"目标三","课程目标得分"})

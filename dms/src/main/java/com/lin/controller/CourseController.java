@@ -4,6 +4,7 @@ package com.lin.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lin.domain.Response;
 import com.lin.domain.ResponseCode;
+import com.lin.domain.vo.CascadeVo;
 import com.lin.domain.vo.CourseNameVo;
 import com.lin.domain.vo.CourseVo;
 import com.lin.entity.Course;
@@ -115,5 +116,15 @@ public class CourseController {
         return response;
 
 
+    }
+
+    @GetMapping("/getCourseCascade")
+    public Response getCourseCascade(){
+        Response response = new Response();
+        List<CascadeVo> vos = courseService.getCascade();
+
+        response.setData(vos);
+        response.setStatusCode(ResponseCode.SUCCESS);
+        return response;
     }
 }

@@ -57,7 +57,7 @@ public class StudentCourseService extends ServiceImpl<StudentCourseMapper, Stude
         return gradeAvg;
     }
 
-    public void save(List<GradeExcel> lists) {
+    public void save(List<GradeExcel> lists,Long courseId) {
 
         List<StudentCourse> gradeLists = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class StudentCourseService extends ServiceImpl<StudentCourseMapper, Stude
             StudentCourse grade = new StudentCourse();
 
             grade.setStuId(list.getStuId());
-            grade.setCourseId(list.getCourseId());
+            grade.setCourseId(courseId);
 
             grade.setObjectiveOneUsual(list.getObjectiveOneUsual());
             grade.setObjectiveOneExperiment(list.getObjectiveOneExperiment());
