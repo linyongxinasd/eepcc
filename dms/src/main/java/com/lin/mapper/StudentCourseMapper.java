@@ -1,5 +1,6 @@
 package com.lin.mapper;
 
+import com.lin.domain.ObjectiveBelowNums;
 import com.lin.domain.param.CourseGradeParam;
 import com.lin.domain.vo.*;
 import com.lin.entity.StudentCourse;
@@ -31,4 +32,5 @@ public interface StudentCourseMapper extends BaseMapper<StudentCourse> {
     void saveBathGrade(List<StudentCourse> list);
 
 
+    ObjectiveBelowNums getObjectiveBelowNums(@Param("param") CourseGradeParam param);
 }

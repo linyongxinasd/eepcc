@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <table-set>
+    <table path="dms.student_course">
+      <table path="dms.user" from="stu_id" to="id"/>
+    </table>
+    <table path="dms.course">
+      <table path="dms.semester" from="semester" to="id"/>
+      <table path="dms.type" from="course_type_id" to="id"/>
+    </table>
+  </table-set>
+</data>

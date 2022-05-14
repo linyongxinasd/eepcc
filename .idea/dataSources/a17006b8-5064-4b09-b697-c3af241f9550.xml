@@ -873,7 +873,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <column id="253" parent="237" name="credit">
       <Position>6</Position>
       <Comment>课程学分</Comment>
-      <DataType>double|0s</DataType>
+      <DataType>double(4,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="254" parent="237" name="stu_class_id">
@@ -905,12 +905,14 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>12</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
     <column id="260" parent="237" name="update_time">
       <Position>13</Position>
       <Comment>更新时间</Comment>
       <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
@@ -921,14 +923,14 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="262" parent="238" name="id">
       <Position>1</Position>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="263" parent="238" name="parent_id">
       <Position>2</Position>
       <Comment>父菜单ID，一级菜单为0</Comment>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
     </column>
     <column id="264" parent="238" name="title">
       <Position>3</Position>
@@ -983,6 +985,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>12</Position>
       <Comment>更新时间</Comment>
       <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
@@ -1016,11 +1019,12 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>2</Position>
       <Comment>名称</Comment>
       <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="280" parent="239" name="description">
       <Position>3</Position>
       <Comment>描述</Comment>
-      <DataType>varchar(200)|0s</DataType>
+      <DataType>varchar(50)|0s</DataType>
     </column>
     <column id="281" parent="239" name="is_system_role">
       <Position>4</Position>
@@ -1035,18 +1039,18 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="283" parent="240" name="id">
       <Position>1</Position>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="284" parent="240" name="role_id">
       <Position>2</Position>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="285" parent="240" name="menu_id">
       <Position>3</Position>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="286" parent="240" name="PRIMARY">
@@ -1237,7 +1241,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="320" parent="246" name="id">
       <Position>1</Position>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -1263,7 +1267,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="325" parent="246" name="state">
       <Position>6</Position>
-      <Comment>账号状态(0未提交，1审核通过，2审核失败,3审核中)</Comment>
+      <Comment>账号状态(0表示禁用，1表示正常)</Comment>
       <DataType>int(2)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
@@ -1279,6 +1283,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>8</Position>
       <Comment>最近更新时间</Comment>
       <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
@@ -1294,6 +1299,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="330" parent="247" name="id">
       <Position>1</Position>
+      <Comment>id</Comment>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>

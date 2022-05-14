@@ -1,13 +1,11 @@
 package com.lin.controller;
 
 
+import com.lin.domain.ReportMessage;
 import com.lin.domain.Response;
 import com.lin.domain.ResponseCode;
 import com.lin.domain.param.CourseGradeParam;
-import com.lin.domain.vo.GradeAvg;
-import com.lin.domain.vo.GradeVo;
-import com.lin.domain.vo.ObjectiveGradeChartsVo;
-import com.lin.domain.vo.StudentGradeVo;
+import com.lin.domain.vo.*;
 import com.lin.entity.User;
 import com.lin.mapper.CourseMapper;
 import com.lin.mapper.StudentCourseMapper;
@@ -110,6 +108,16 @@ public class StudentCourseController {
         response.setStatusCode(ResponseCode.SUCCESS);
 
 
+        return response;
+    }
+
+    @PostMapping("/getCourseReport")
+    public Response getCourseReport(@RequestBody CourseGradeParam param){
+        Response response = new Response();
+        ReportVo vo = studentCourseService.getCourseReport(param);
+
+        response.setMsg(ReportMessage.ACHIEVED_ONE);
+        response.setData(vo);
         return response;
     }
 
