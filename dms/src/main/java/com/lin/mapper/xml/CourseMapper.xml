@@ -13,9 +13,9 @@
                (select sc.name from stu_class sc where sc.id = c.stu_class_id) stuClass,
                (select scg.name from (select  sg.*,sc.id classId from stu_grade sg , stu_class sc where sc.stu_grade_id = sg.id )scg where scg.classId = c.stu_class_id) stuGrade,
                (select se.name from semester se where se.id = c.semester)semester,
-               (select username from user u where u.id = c.teacher_id) teacher,
-               (select username from user u where u.id = c.evaluator_id) evaluator,
-               (select username from user u where u.id = c.director_id) director,
+               (select name from user u where u.id = c.teacher_id) teacher,
+               (select name from user u where u.id = c.evaluator_id) evaluator,
+               (select name from user u where u.id = c.director_id) director,
                create_time createTime,
                update_time updateTime
         from course c
@@ -32,9 +32,9 @@
                (select sc.name from stu_class sc where sc.id = c.stu_class_id) stuClass,
                (select scg.name from (select  sg.*,sc.id classId from stu_grade sg , stu_class sc where sc.stu_grade_id = sg.id )scg where scg.classId = c.stu_class_id) stuGrade,
                (select se.name from semester se where se.id = c.semester)semester,
-               (select username from user u where u.id = c.teacher_id) teacher,
-               (select username from user u where u.id = c.evaluator_id) evaluator,
-               (select username from user u where u.id = c.director_id) director,
+               (select name from user u where u.id = c.teacher_id) teacher,
+               (select name from user u where u.id = c.evaluator_id) evaluator,
+               (select name from user u where u.id = c.director_id) director,
                create_time createTime,
                update_time updateTime
         from course c

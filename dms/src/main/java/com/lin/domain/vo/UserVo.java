@@ -12,5 +12,5 @@ public class UserVo {
     private Long id;
 
     @ApiModelProperty("用户登录名")
-    private String username;
+    private String name;
 }

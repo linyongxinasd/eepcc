@@ -54,7 +54,6 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
                 username = username.trim();
                 String password = obtainPassword(request);
                 password = (password != null) ? password : "";
-                password = (password != null) ? password : "";
 
                 String kaptcha = request.getParameter(getKaptchaParameter());
                 String token = request.getParameter("token");

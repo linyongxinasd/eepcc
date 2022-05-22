@@ -113,7 +113,7 @@
         select sc.id,
                sum(IF(objective_one_grade / 71 > 0.6, 0, 1)) objectOneBelow,
                sum(IF(objective_two_grade / 21 > 0.6, 0, 1)) objectTwoBelow,
-               sum(IF(objective_one_grade / 8 > 0.6, 0, 1)) objectThreeBelow
+               sum(IF(objective_three_grade / 8 > 0.6, 0, 1)) objectThreeBelow
         from student_course sc
                  left join `user` u on u.id = sc.stu_id
                  left join course c on c.id = sc.course_id

@@ -39,6 +39,9 @@ public class User implements Serializable, UserDetails {
     @ApiModelProperty("用户登录密码")
     private String password;
 
+    @ApiModelProperty("用户姓名")
+    private String name;
+
     @ApiModelProperty("头像")
     private String avatar;
 
@@ -115,6 +118,14 @@ public class User implements Serializable, UserDetails {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAvatar() {
         return avatar;
     }
@@ -167,6 +178,7 @@ public class User implements Serializable, UserDetails {
     public String toString() {
         return "User{" +
         "id=" + id +
+        ", name=" + name +
         ", username=" + username +
         ", password=" + password +
         ", avatar=" + avatar +

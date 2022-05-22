@@ -62,7 +62,7 @@ public class StudentCourseController {
     public Response getStudentGrade(Principal principal){
         Response response = new Response();
 
-        User user = userMapper.loadUserByUsername(principal.getName());
+        User user = userMapper. loadUserByUsername(principal.getName());
 
         List<GradeVo> vos = studentCourseService.getStudentGradeList(user.getId());
 

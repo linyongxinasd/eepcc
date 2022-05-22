@@ -3,11 +3,13 @@ package com.lin.controller;
 
 import com.lin.domain.Response;
 import com.lin.domain.ResponseCode;
+import com.lin.domain.param.PasswordParam;
 import com.lin.entity.User;
 import com.lin.mapper.UserMapper;
 import com.lin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +36,13 @@ public class UserController {
         return response;
 
 
+    }
+
+    @PostMapping("/updatePassword")
+    public Response updatePassword(@RequestBody PasswordParam param, Principal principal){
+        Response response = new Response();
+        response.setResponseBySuccessMsg("更新密码成功！");
+        return response;
     }
 
 

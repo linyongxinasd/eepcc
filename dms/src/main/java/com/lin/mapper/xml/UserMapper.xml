@@ -21,7 +21,7 @@
     <!--这边下面的是测试教师对应角色的-->
     <select id="getUserList" resultType="com.lin.domain.vo.UserVo">
 
-        select u.id, username
+        select u.id, u.name
         from user u , user_role ur
         where
               u.id = ur.user_id
