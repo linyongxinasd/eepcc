@@ -90,7 +90,13 @@ public class CourseController {
 
         //courseService.delete(ids);
 
-        courseService.removeBatchByIds(Arrays.asList(ids));
+        boolean re = courseService.removeBatchByIds(Arrays.asList(ids));
+
+        if (re){
+            response.setResponseBySuccessMsg("删除成功");
+        } else{
+            response.setResponseByErrorMsg("删除失败");
+        }
 
         return response;
     }

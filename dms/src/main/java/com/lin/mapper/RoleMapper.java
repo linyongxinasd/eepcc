@@ -1,7 +1,10 @@
 package com.lin.mapper;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lin.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
+    Page<Role> getByName(Page<Role> page,String name);
 }

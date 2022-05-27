@@ -42,11 +42,11 @@ public class User implements Serializable, UserDetails {
     @ApiModelProperty("用户姓名")
     private String name;
 
+    @ApiModelProperty("性别")
+    private String gender;
+
     @ApiModelProperty("头像")
     private String avatar;
-
-    @ApiModelProperty("账号状态(0未提交，1审核通过，2审核失败,3审核中)")
-    private Integer state;
 
     @ApiModelProperty("创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -126,20 +126,20 @@ public class User implements Serializable, UserDetails {
         this.name = name;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getAvatar() {
         return avatar;
     }
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
     }
 
     public LocalDateTime getCreateTime() {
@@ -178,11 +178,12 @@ public class User implements Serializable, UserDetails {
     public String toString() {
         return "User{" +
         "id=" + id +
-        ", name=" + name +
         ", username=" + username +
         ", password=" + password +
+        ", name=" + name +
+        ", gender=" + gender +
         ", avatar=" + avatar +
-        ", state=" + state +
+        ", enable=" + enable +
         ", createTime=" + createTime +
         ", updateTime=" + updateTime +
         "}";

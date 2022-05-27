@@ -5,7 +5,7 @@
     <select id="getCourseGradeList" resultType="com.lin.domain.vo.StudentGradeVo">
 
         select sc.id,
-               u.username                 stuName,
+               u.name                 stuName,
                c.course_name              courseName,
                objective_one_usual        objectiveOneUsual,
                objective_one_experiment   objectiveOneExperiment,

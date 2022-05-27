@@ -10,7 +10,7 @@
 
 
     <select id="getRolesByUid" resultType="com.lin.entity.Role">
-        select r.id, r.name, description, is_system_role
+        select r.id, r.name, description, r.status
         from role r,
              user_role ur
         where r.id = ur.role_id
@@ -27,7 +27,93 @@
               u.id = ur.user_id
           and ur.role_id = #{id}
     </select>
+    <resultMap id="userRoleMap" type="com.lin.entity.User">
+        <id property="id" column="uid"/>
+        <result property="username" column="username"/>
+        <result property="name" column="name"/>
+        <result property="gender" column="gender"/>
+        <result property="avatar" column="avatar"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="enable" column="enable"/>
+        <collection property="roles" ofType="com.lin.entity.Role">
+            <id property="id" column="rid"/>
+            <result property="name" column="roleName"/>
+        </collection>
+    </resultMap>
 
+
+    <select id="getList" resultMap="userRoleMap">
+        select u.id uid,
+               u.username,
+               u.name,
+               u.gender,
+               u.avatar,
+               u.create_time,
+               u.update_time,
+               u.enable,
+               r.id rid,
+               r.name roleName
+        from user u
+        left join user_role ur on u.id = ur.user_id
+        left join role r on r.id = ur.role_id
+    </select>
+
+
+    <select id="getUserByName" resultType="com.lin.entity.User">
+        select * from user
+        where username like concat('%',#{name},'%')
+            or name like concat('%',#{name},'%')
+    </select>
+
+
+    <insert id="saveUser" parameterType="com.lin.entity.User">
+        insert into user (username,password,name,gender,avatar,enable)
+        values (#{param.username},#{param.password},#{param.name},#{param.gender},#{param.avatar},#{param.enable})
+    </insert>
+
+    <select id="getUserById" resultMap="userRoleMap">
+        select u.id uid,
+               u.username,
+               u.name,
+               u.gender,
+               u.avatar,
+               u.create_time,
+               u.update_time,
+               u.enable,
+               r.id rid,
+               r.name roleName
+        from user u
+                 left join user_role ur on u.id = ur.user_id
+                 left join role r on r.id = ur.role_id
+        where u.id = #{id}
+    </select>
+
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="param.username != null">
+                username = #{param.username},
+            </if>
+            <if test="param.name != null">
+                name = #{param.name},
+            </if>
+            <if test="param.gender != null">
+                gender = #{param.gender},
+            </if>
+            <if test="param.enable != null">
+                enable = #{param.enable}
+            </if>
+            where id = #{param.id}
+        </set>
+
+    </update>
+
+    <update id="updatePassWord">
+        update user
+        set password = #{password}
+        where id = #{id}
+    </update>
 
 
 </mapper>

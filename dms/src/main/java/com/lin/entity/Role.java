@@ -30,7 +30,7 @@ public class Role implements Serializable {
     private String description;
 
     @ApiModelProperty("是否系统角色")
-    private Boolean isSystemRole;
+    private Boolean status;
 
 
     public Long getId() {
@@ -57,12 +57,12 @@ public class Role implements Serializable {
         this.description = description;
     }
 
-    public Boolean getIsSystemRole() {
-        return isSystemRole;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setIsSystemRole(Boolean isSystemRole) {
-        this.isSystemRole = isSystemRole;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Role implements Serializable {
         "id=" + id +
         ", name=" + name +
         ", description=" + description +
-        ", isSystemRole=" + isSystemRole +
+        ", status=" + status +
         "}";
     }
 }
